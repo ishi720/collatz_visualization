@@ -58,6 +58,11 @@ function collatz(n) {
  * @param  {Number} n 自然数
  */
 function nodeAdd(n) {
+
+  if (nodes.get(n)) {
+    return; //登録済みのnodeは追加しない
+  }
+
   nodes.add([{
     id: n,
     label: String(n)
