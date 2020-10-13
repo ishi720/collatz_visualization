@@ -21,6 +21,8 @@
 </head>
 <body>
     <h2>Collatz Visualization</h2>
+    <input id="input_number" type="number" min="2" value="2">
+    <button onclick="nodeAddButton()">追加</button>
     <div id="network"></div>
 </body>
 </html>
@@ -37,4 +39,43 @@ var data = {
 }
 var options = {};
 var network = new vis.Network(container, data, options);
+
+/*
+ * コラッツ問題の計算を行う
+ * @param  {Number} n 自然数
+ * @return {Number}   計算結果
+ */
+function collatz(n) {
+  if (n % 2 === 0) {
+    return n / 2;
+  } else {
+    return (n * 3) + 1;
+  }
+}
+
+/*
+ * nodeを追加する
+ * @param  {Number} n 自然数
+ */
+function nodeAdd(n) {
+  nodes.add([{
+    id: n,
+    label: String(n)
+  }]);
+
+  edges.add([{
+    from: String(n),
+    to: String(collatz(n)),
+    arrows: 'to'
+  }]);
+}
+
+/*
+ * inputタグの情報からnodeを追加する
+ */
+function nodeAddButton() {
+  n = Number(document.getElementById("input_number").value);
+  nodeAdd(n);
+}
+
 </script>
