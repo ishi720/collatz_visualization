@@ -25,9 +25,13 @@
     <button onclick="nodeAddButton()">追加</button>
 
     <div>
-      選択を削除
-      <button onclick="nodeRemove()">削除</button>
+      <button onclick="nodeRemove()">選択を削除</button>
     </div>
+
+    <div>
+      <button onclick="collatzRepeatButton()">選択した数から1までを追加する</button>
+    </div>
+
 
     <div id="network"></div>
 </body>
@@ -92,6 +96,34 @@ function collatzReverseOrder(n) {
   array.push(n * 2);
   return array;
 }
+
+/*
+ * 1になるまで追加
+ * @param  {Number} n 自然数
+ */
+function collatzRepeat(n) {
+  nodeAdd(n);
+  nodeAdd(collatzReverseOrder(n));
+  while ( n !== 1 ) {
+    n = collatz(n);
+    nodeAdd(n);
+
+    collatzReverseOrder(n).forEach(function(n) {
+      nodeAdd(n);
+    });
+  }
+}
+
+/*
+ * 選択したnodeから1になるまで追加するボタン
+ */
+function collatzRepeatButton() {
+  if ( network.getSelectedNodes().length > 0 ) {
+    var n = network.getSelectedNodes();
+    collatzRepeat(n);
+  }
+}
+
 
 /*
  * nodeを追加する
