@@ -29,6 +29,10 @@
     </div>
 
     <div>
+      <button onclick="nodeClear()">すべてクリア</button>
+    </div>
+
+    <div>
       <button onclick="collatzRepeatButton()">選択した数から1までを追加する</button>
     </div>
 
@@ -124,6 +128,13 @@ function collatzRepeatButton() {
   }
 }
 
+/*
+ * すべてのnodeをクリア
+ */
+function nodeClear() {
+  nodes.clear();
+  edges.clear();
+}
 
 /*
  * nodeを追加する
