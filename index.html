@@ -23,6 +23,12 @@
     <h2>Collatz Visualization</h2>
     <input id="input_number" type="number" min="2" value="2">
     <button onclick="nodeAddButton()">追加</button>
+
+    <div>
+      選択を削除
+      <button onclick="nodeRemove()">削除</button>
+    </div>
+
     <div id="network"></div>
 </body>
 </html>
@@ -97,10 +103,20 @@ function nodeAdd(n) {
   }]);
 
   edges.add([{
+    id: n,
     from: String(n),
     to: String(collatz(n)),
     arrows: 'to'
   }]);
+}
+
+/*
+ * 選択したnodeを削除する
+ */
+function nodeRemove() {
+  var selectedNode = network.getSelectedNodes();
+  nodes.remove(selectedNode);
+  edges.remove(selectedNode);
 }
 
 /*
