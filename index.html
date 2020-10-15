@@ -44,6 +44,9 @@
 <script type="text/javascript">
 var nodes = new vis.DataSet();
 var edges = new vis.DataSet();
+
+var divide = 3; //グループ分けのための除算する値
+
 var container = document.getElementById('network');
 var data = {
   nodes: nodes,
@@ -150,7 +153,7 @@ function nodeAdd(n) {
   nodes.add([{
     id: n,
     label: String(n),
-    group: getGroup(n)
+    group: getGroup(n,divide)
   }]);
 
   if (n !== 1) {
@@ -166,9 +169,26 @@ function nodeAdd(n) {
 /*
  * 3で割った余りでグループ分けする
  * @param  {Number} n 自然数
+ * @param  {Number} d 除算
  */
-function getGroup(n) {
-  return String(n % 3);
+function getGroup(n, d) {
+  return String(n % d);
+}
+
+/*
+ * nodeを更新する
+ */
+function nodeUpdate(d) {
+  divide = d;
+  nodes.getIds().forEach(function(n) {
+    // 割った余りでグループを更新する
+    nodes.update({
+      id: n,
+      label: String(n),
+      group: getGroup(n, divide)
+    });
+  });
+
 }
 
 /*
