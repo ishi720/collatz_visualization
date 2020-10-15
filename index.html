@@ -42,9 +42,7 @@
 </html>
 
 <script type="text/javascript">
-var nodes = new vis.DataSet([
-  {id: 1, label: '1'}
-]);
+var nodes = new vis.DataSet();
 var edges = new vis.DataSet();
 var container = document.getElementById('network');
 var data = {
@@ -53,6 +51,10 @@ var data = {
 }
 var options = {};
 var network = new vis.Network(container, data, options);
+
+for (var i=1; i <= 100; i++) {
+  nodeAdd(i)
+}
 
 //ダブルクリックイベント
 network.on("doubleClick", function(params) {
