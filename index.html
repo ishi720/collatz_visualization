@@ -143,14 +143,14 @@ function nodeClear() {
  * @param  {Number} n 自然数
  */
 function nodeAdd(n) {
-
   if (nodes.get(n)) {
     return; //登録済みのnodeは追加しない
   }
 
   nodes.add([{
     id: n,
-    label: String(n)
+    label: String(n),
+    group: getGroup(n)
   }]);
 
   if (n !== 1) {
@@ -161,6 +161,14 @@ function nodeAdd(n) {
       arrows: 'to'
     }]);
   }
+}
+
+/*
+ * 3で割った余りでグループ分けする
+ * @param  {Number} n 自然数
+ */
+function getGroup(n) {
+  return String(n % 3);
 }
 
 /*
