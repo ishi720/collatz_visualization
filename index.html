@@ -45,6 +45,7 @@
 var nodes = new vis.DataSet();
 var edges = new vis.DataSet();
 
+var groupMode = 'mod'; // mod,odd
 var divide = 3; //グループ分けのための除算する値
 
 var container = document.getElementById('network');
@@ -167,28 +168,66 @@ function nodeAdd(n) {
 }
 
 /*
- * 3で割った余りでグループ分けする
+ * グループ分けをする
+ */
+function getGroup() {
+  if (groupMode === 'mod') {
+    nodeUpdateGroupMod(divide);
+  } else {
+    nodeUpdateGroupOdd();
+  }
+}
+
+
+/*
+ * nを割った余りを返す
  * @param  {Number} n 自然数
  * @param  {Number} d 除算
  */
-function getGroup(n, d) {
+function getGroupMod(n, d) {
   return String(n % d);
 }
 
 /*
- * nodeを更新する
+ * 2で割り続けた際のたどり着く奇数を返す
+ * @param  {Number} n 自然数
  */
-function nodeUpdate(d) {
+ function getGroupOdd(n) {
+  while ( n % 2 === 0 ) {
+    n = n / 2;
+  }
+  return String(n);
+}
+
+/*
+ * nodeを更新
+* nで割った余りでグループ分けする
+ */
+function nodeUpdateGroupMod(d) {
   divide = d;
   nodes.getIds().forEach(function(n) {
     // 割った余りでグループを更新する
     nodes.update({
       id: n,
       label: String(n),
-      group: getGroup(n, divide)
+      group: getGroupMod(n, divide)
     });
   });
+}
 
+/*
+ * nodeを更新
+ * 2で割り続けた際のたどり着く奇数の値でグループ分けする
+ */
+ function nodeUpdateGroupOdd() {
+  nodes.getIds().forEach(function(n) {
+    // 割った余りでグループを更新する
+    nodes.update({
+      id: n,
+      label: String(n),
+      group: getGroupOdd(n)
+    });
+  });
 }
 
 /*
