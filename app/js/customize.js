@@ -171,7 +171,7 @@ function nodeAddButton() {
   n = Number(document.getElementById("add_number").value);
   nodeAdd(n);
 
-  nodeSerach(n);
+  nodeSearch(n);
 }
 
 
