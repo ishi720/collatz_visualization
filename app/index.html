@@ -23,8 +23,15 @@
 </head>
 <body>
     <h2>Collatz Visualization</h2>
-    <input id="input_number" type="number" min="1" value="1">
-    <button onclick="nodeAddButton()">追加</button>
+    <div>
+      <input id="add_number" type="number" min="1" value="1">
+      <button onclick="nodeAddButton()">追加</button>
+    </div>
+
+    <div>
+      <input id="search_number" type="number" min="1" value="1">
+      <button onclick="nodeSearchButton()">検索</button>
+    </div>
 
     <div>
       <button onclick="nodeRemove()">選択を削除</button>
@@ -58,7 +65,7 @@ var options = {};
 var network = new vis.Network(container, data, options);
 
 for (var i=1; i <= 100; i++) {
-  nodeAdd(i)
+  nodeAdd(i);
 }
 
 //ダブルクリックイベント

@@ -168,10 +168,33 @@ function nodeRemove() {
  * inputタグの情報からnodeを追加する
  */
 function nodeAddButton() {
-  n = Number(document.getElementById("input_number").value);
+  n = Number(document.getElementById("add_number").value);
   nodeAdd(n);
 
-  //追加したnodeを選択状態にする
+  nodeSerach(n);
+}
+
+
+/*
+ * inputタグの情報からnodeを追加する
+ */
+function nodeSearchButton() {
+
+  n = Number(document.getElementById("search_number").value);
+  nodeSearch(n);
+
+}
+
+/*
+ * nodeIdから対象のnodeを検索しセンター表示
+ */
+function nodeSearch(n) {
+
+  if (!nodes.get(n)) {
+    return;
+  }
+
+  //選択したnodeを選択状態にする
   network.setSelection({nodes:[n]});
 
   //追加したnodeを中心にする
