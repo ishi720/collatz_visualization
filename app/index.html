@@ -11,7 +11,7 @@
     <script type="text/javascript" src="./node_modules/visjs-network/dist/vis.js"></script>
     <link href="./node_modules/visjs-network/dist/vis.css" rel="stylesheet">
 
-    <script type="text/javascript" src="./js/customize.js"></script>    
+    <script type="text/javascript" src="./js/customize.js"></script>
 
     <style type="text/css">
       #network {
@@ -23,7 +23,7 @@
 </head>
 <body>
     <h2>Collatz Visualization</h2>
-    <input id="input_number" type="number" min="2" value="2">
+    <input id="input_number" type="number" min="1" value="1">
     <button onclick="nodeAddButton()">追加</button>
 
     <div>
@@ -41,3 +41,35 @@
     <div id="network"></div>
 </body>
 </html>
+
+<script type="text/javascript">
+var nodes = new vis.DataSet();
+var edges = new vis.DataSet();
+
+var groupMode = 'mod'; // mod,odd
+var divide = 3; //グループ分けのための除算する値
+
+var container = document.getElementById('network');
+var data = {
+  nodes: nodes,
+  edges: edges
+}
+var options = {};
+var network = new vis.Network(container, data, options);
+
+for (var i=1; i <= 100; i++) {
+  nodeAdd(i)
+}
+
+//ダブルクリックイベント
+network.on("doubleClick", function(params) {
+  if (params.nodes.length === 1) {
+    //クリック時に前後の数を追加する
+    var nodeId = params.nodes[0];
+    nodeAdd(collatz(nodeId));
+    collatzReverseOrder(nodeId).forEach(function(n) {
+      nodeAdd(n);
+    });
+  }
+});
+</script>

@@ -1,43 +1,9 @@
-var nodes = new vis.DataSet();
-var edges = new vis.DataSet();
-var groupMode = 'mod'; // mod,odd
-var divide = 3; //グループ分けのための除算する値
-
-window.onload = function () {
-
-  var container = document.getElementById('network');
-  var data = {
-    nodes: nodes,
-    edges: edges
-  }
-  var options = {};
-  var network = new vis.Network(container, data, options);
-
-  for (var i=1; i <= 100; i++) {
-    nodeAdd(i)
-  }
-
-  //ダブルクリックイベント
-  network.on("doubleClick", function(params) {
-    if (params.nodes.length == 1) {
-      //クリック時に前後の数を追加する
-      var nodeId = params.nodes[0];
-      nodeAdd(collatz(nodeId));
-      collatzReverseOrder(nodeId).forEach(function(n) {
-        nodeAdd(n);
-      });
-    }
-  });
-};
-
-
 /*
  * コラッツ問題の計算を行う
  * @param  {Number} n 自然数
  * @return {Number}   計算結果
  */
 function collatz(n) {
-
   if (n === 1)  {
     return;
   }
