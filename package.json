@@ -4,7 +4,7 @@
   "description": "",
   "main": "app/index.html",
   "scripts": {
-    "postinstall": "cd app && yarn install",
+    "postinstall": "cd app && yarn install && gulp js-minify",
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
