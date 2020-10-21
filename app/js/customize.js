@@ -202,6 +202,10 @@ function nodeSearch(n) {
     position: {
       x: network.getPositions()[n].x,
       y: network.getPositions()[n].y
+    },
+    animation: {
+      duration: 1000,
+      easingFunction: 'easeInOutQuad'
     }
   });
 }
