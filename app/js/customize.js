@@ -130,6 +130,7 @@ function getGroupMod(n, d) {
  */
 function nodeUpdateGroupMod(d) {
   divide = d;
+  groupMode = 'mod';
   nodes.getIds().forEach(function(n) {
     // 割った余りでグループを更新する
     nodes.update({
@@ -145,6 +146,7 @@ function nodeUpdateGroupMod(d) {
  * 2で割り続けた際のたどり着く奇数の値でグループ分けする
  */
  function nodeUpdateGroupOdd() {
+  groupMode = 'odd';
   nodes.getIds().forEach(function(n) {
     // 割った余りでグループを更新する
     nodes.update({
