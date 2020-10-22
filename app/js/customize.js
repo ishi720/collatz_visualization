@@ -54,7 +54,7 @@ function collatzRepeat(n) {
  */
 function collatzRepeatButton() {
   if ( network.getSelectedNodes().length > 0 ) {
-    var n = network.getSelectedNodes();
+    var n = network.getSelectedNodes()[0];
     collatzRepeat(n);
   }
 }
