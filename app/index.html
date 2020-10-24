@@ -7,8 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <!-- <script type="text/javascript" src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <link src="./node_modules/bootstrap/dist/js/bootstrap.min.css" rel="stylesheet"> -->
     <link href="./node_modules/bulma/css/bulma.min.css" rel="stylesheet">
 
     <script type="text/javascript" src="./node_modules/visjs-network/dist/vis.js"></script>
@@ -27,52 +25,56 @@
 </head>
 <body>
 
-  <h2>Collatz Visualization</h2>
+  <nav class="navbar has-shadow" style="padding: .5rem;">
+    <h2 class="title">Collatz Visualization</h2>
+  </nav>
 
-  <div class="columns">
-    <div class="column is-3">
-      <div>
-        <input id="add_number" type="number" min="1" value="1">
-        <button onclick="nodeAddButton()">追加</button>
+  <div class="container is-fluid" style="padding: 1.5rem;">
+    <div class="columns">
+      <div class="column is-3">
+        <div>
+          <input id="add_number" type="number" min="1" value="1">
+          <button onclick="nodeAddButton()">追加</button>
+        </div>
+    
+        <div>
+          <input id="search_number" type="number" min="1" value="1">
+          <button onclick="nodeSearchButton()">検索</button>
+        </div>
+    
+        <div>
+          <button onclick="nodeRemove()">選択を削除</button>
+        </div>
+    
+        <div>
+          <button onclick="nodeClear()">すべてクリア</button>
+        </div>
+    
+        <div>
+          <button onclick="collatzRepeatButton()">選択した数から1までを追加する</button>
+        </div>
+    
+        <div>
+          <div>割った余りで色分けする</div>
+    
+          <button onclick="nodeUpdateGroupMod(2)">Mod 2</button>
+          <button onclick="nodeUpdateGroupMod(3)">Mod 3</button>
+          <button onclick="nodeUpdateGroupMod(4)">Mod 4</button>
+          <button onclick="nodeUpdateGroupMod(5)">Mod 5</button>
+          <button onclick="nodeUpdateGroupMod(6)">Mod 6</button>
+          <button onclick="nodeUpdateGroupMod(7)">Mod 7</button>
+          <button onclick="nodeUpdateGroupMod(8)">Mod 8</button>
+          <button onclick="nodeUpdateGroupMod(9)">Mod 9</button>
+          <button onclick="nodeUpdateGroupMod(10)">Mod 10</button>
+    
+          <div>2で割り続けた際の奇数値で色分けする</div>
+    
+          <button onclick="nodeUpdateGroupOdd()">奇数値</button>
+        </div>
       </div>
-  
-      <div>
-        <input id="search_number" type="number" min="1" value="1">
-        <button onclick="nodeSearchButton()">検索</button>
+      <div class="column is-9">
+        <div id="network"></div>
       </div>
-  
-      <div>
-        <button onclick="nodeRemove()">選択を削除</button>
-      </div>
-  
-      <div>
-        <button onclick="nodeClear()">すべてクリア</button>
-      </div>
-  
-      <div>
-        <button onclick="collatzRepeatButton()">選択した数から1までを追加する</button>
-      </div>
-  
-      <div>
-        <div>割った余りで色分けする</div>
-  
-        <button onclick="nodeUpdateGroupMod(2)">Mod 2</button>
-        <button onclick="nodeUpdateGroupMod(3)">Mod 3</button>
-        <button onclick="nodeUpdateGroupMod(4)">Mod 4</button>
-        <button onclick="nodeUpdateGroupMod(5)">Mod 5</button>
-        <button onclick="nodeUpdateGroupMod(6)">Mod 6</button>
-        <button onclick="nodeUpdateGroupMod(7)">Mod 7</button>
-        <button onclick="nodeUpdateGroupMod(8)">Mod 8</button>
-        <button onclick="nodeUpdateGroupMod(9)">Mod 9</button>
-        <button onclick="nodeUpdateGroupMod(10)">Mod 10</button>
-  
-        <div>2で割り続けた際の奇数値で色分けする</div>
-  
-        <button onclick="nodeUpdateGroupOdd()">奇数値</button>
-      </div>
-    </div>
-    <div class="column is-9">
-      <div id="network"></div>
     </div>
   </div>
 </body>
