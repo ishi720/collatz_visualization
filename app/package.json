@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/ishi720/collatz_visualization#readme",
   "dependencies": {
+    "bulma": "0.9.x",
     "visjs-network": "4.x.x"
   }
 }
