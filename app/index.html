@@ -11,6 +11,8 @@
 
     <script type="text/javascript" src="./node_modules/visjs-network/dist/vis.js"></script>
     <link href="./node_modules/visjs-network/dist/vis.css" rel="stylesheet">
+    
+    <script type="text/javascript" src="./node_modules/vue/dist/vue.min.js"></script>
 
     <script type="text/javascript" src="./js/customize.min.js"></script>
     <link rel="stylesheet" href="./css/customize.min.css">
@@ -21,9 +23,12 @@
     <h2 class="title">Collatz Visualization</h2>
   </nav>
 
-  <div class="container is-fluid">
+    <div class="container is-fluid">
     <div class="columns">
       <div class="column is-3">
+
+        <div id="selectedNode">選択中の数値: {{nodeId}}</div>
+
         <div>
           <input id="add_number" type="number" min="1" value="1">
           <button onclick="nodeAddButton()">追加</button>
@@ -75,6 +80,14 @@
 <script type="text/javascript">
 var nodes = new vis.DataSet();
 var edges = new vis.DataSet();
+var selectedNode = new Vue({
+  el: '#selectedNode',
+  data: {
+    nodeId: ""
+  }
+});
+
+
 
 var groupMode = 'mod'; // mod,odd
 var divide = 3; //グループ分けのための除算する値
@@ -90,6 +103,16 @@ var network = new vis.Network(container, data, options);
 for (var i=1; i <= 100; i++) {
   nodeAdd(i);
 }
+
+selectedNode.nodeId = 1;
+
+
+network.on("click", function(params) {
+  if (params.nodes.length === 1) {
+    //クリック時に前後の数を追加する
+    selectedNode.nodeId = params.nodes[0];
+  }
+});
 
 //ダブルクリックイベント
 network.on("doubleClick", function(params) {

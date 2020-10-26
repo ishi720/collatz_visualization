@@ -161,7 +161,7 @@ function nodeUpdateGroupMod(d) {
  * 選択したnodeを削除する
  */
 function nodeRemove() {
-  var selectedNode = network.getSelectedNodes();
+  selectedNode = network.getSelectedNodes();
   nodes.remove(selectedNode);
   edges.remove(selectedNode);
 }
@@ -198,6 +198,7 @@ function nodeSearch(n) {
 
   //選択したnodeを選択状態にする
   network.setSelection({nodes:[n]});
+  selectedNode.nodeId = n;
 
   //追加したnodeを中心にする
   network.moveTo({
