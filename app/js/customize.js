@@ -187,7 +187,7 @@ function nodeRemove() {
  * inputタグの情報からnodeを追加する
  */
 function nodeAddButton() {
-  n = Number(document.getElementById("add_number").value);
+  n = Number(document.getElementById("operation_number").value);
   nodeAdd(n);
 
   nodeSearch(n);
@@ -199,7 +199,7 @@ function nodeAddButton() {
  */
 function nodeSearchButton() {
 
-  n = Number(document.getElementById("search_number").value);
+  n = Number(document.getElementById("operation_number").value);
   nodeSearch(n);
 
 }

@@ -27,28 +27,27 @@
     <div class="columns">
       <div class="column is-3">
 
+        <div class="operation">
+          <p>nodeの追加・検索</p>
+          <input id="operation_number" class="input is-small" type="number" min="1" value="1">
+          <button class="button is-small" onclick="nodeAddButton()">追加</button>
+          <button class="button is-small" onclick="nodeSearchButton()">検索</button>
+        </div>
+
+
         <div id="selectedNode" v-cloak>選択中の数値: {{nodeId}}</div>
 
         <div>
-          <input id="add_number" type="number" min="1" value="1">
-          <button onclick="nodeAddButton()">追加</button>
+          <button class="button is-small" onclick="nodeRemove()">選択を削除</button>
         </div>
     
         <div>
-          <input id="search_number" type="number" min="1" value="1">
-          <button onclick="nodeSearchButton()">検索</button>
+          <button class="button is-small" onclick="collatzRepeatButton()">選択した数から1までを追加する</button>
         </div>
-    
+
+
         <div>
-          <button onclick="nodeRemove()">選択を削除</button>
-        </div>
-    
-        <div>
-          <button onclick="nodeClear()">すべてクリア</button>
-        </div>
-    
-        <div>
-          <button onclick="collatzRepeatButton()">選択した数から1までを追加する</button>
+          <button class="button is-small" onclick="nodeClear()">すべてクリア</button>
         </div>
     
         <div>
@@ -87,8 +86,6 @@ var selectedNode = new Vue({
   }
 });
 
-
-
 var groupMode = 'mod'; // mod,odd
 var divide = 3; //グループ分けのための除算する値
 var baseNumbers = 10;
@@ -100,7 +97,7 @@ var data = {
 var options = {};
 var network = new vis.Network(container, data, options);
 
-for (var i=1; i <= 100; i++) {
+for (var i=1; i <= 30; i++) {
   nodeAdd(i);
 }
 
