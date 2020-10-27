@@ -78,7 +78,7 @@ function nodeAdd(n) {
 
   nodes.add([{
     id: n,
-    label: String(n),
+    label: n.toString(10),
     group: getGroup(n,divide)
   }]);
 
@@ -135,7 +135,7 @@ function nodeUpdateGroupMod(d) {
     // 割った余りでグループを更新する
     nodes.update({
       id: n,
-      label: String(n),
+      label: n.toString(10),
       group: getGroupMod(n, divide)
     });
   });
@@ -151,11 +151,28 @@ function nodeUpdateGroupMod(d) {
     // 割った余りでグループを更新する
     nodes.update({
       id: n,
-      label: String(n),
+      label: n.toString(10),
       group: getGroupOdd(n)
     });
   });
 }
+
+/*
+ * nodeを更新
+ * n進法の表記に変換する
+ *  * @param  {Number} bn 基数
+ */
+function nodeUpdateLabelbaseNumbers(bn) {
+  baseNumbers = bn;
+  nodes.getIds().forEach(function(n) {
+    // 割った余りでグループを更新する
+    nodes.update({
+      id: n,
+      label: n.toString(baseNumbers),
+    });
+  });
+}
+
 
 /*
  * 選択したnodeを削除する

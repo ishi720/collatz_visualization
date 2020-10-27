@@ -27,7 +27,7 @@
     <div class="columns">
       <div class="column is-3">
 
-        <div id="selectedNode">選択中の数値: {{nodeId}}</div>
+        <div id="selectedNode" v-cloak>選択中の数値: {{nodeId}}</div>
 
         <div>
           <input id="add_number" type="number" min="1" value="1">
@@ -91,7 +91,7 @@ var selectedNode = new Vue({
 
 var groupMode = 'mod'; // mod,odd
 var divide = 3; //グループ分けのための除算する値
-
+var baseNumbers = 10;
 var container = document.getElementById('network');
 var data = {
   nodes: nodes,
