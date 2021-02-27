@@ -35,7 +35,10 @@
         </div>
 
 
-        <div id="selectedNode" v-cloak>選択中の数値: {{nodeId}}</div>
+        <div id="selectedNode" v-cloak>
+          <p v-if="nodeId === null">選択中の数値: -</p>
+          <p v-else>選択中の数値: {{nodeId}}</p>
+        </div>
 
         <div>
           <button class="button is-small" onclick="nodeRemove()">選択を削除</button>
@@ -136,7 +139,7 @@ for (var i=1; i <= 30; i++) {
   nodeAdd(i);
 }
 
-selectedNode.nodeId = 1;
+selectedNode.nodeId = null;
 
 network.on("click", function(params) {
   if (params.nodes.length === 1) {

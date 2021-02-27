@@ -178,9 +178,10 @@ function nodeUpdateLabelbaseNumbers(bn) {
  * 選択したnodeを削除する
  */
 function nodeRemove() {
-  selectedNode = network.getSelectedNodes();
-  nodes.remove(selectedNode);
-  edges.remove(selectedNode);
+  var _selectedNode = network.getSelectedNodes();
+  nodes.remove(_selectedNode);
+  edges.remove(_selectedNode);
+  selectedNode.nodeId = null;
 }
 
 /*
