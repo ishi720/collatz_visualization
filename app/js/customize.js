@@ -129,8 +129,8 @@ function getGroupMod(n, d) {
 * nで割った余りでグループ分けする
  */
 function nodeUpdateGroupMod(d) {
-  divide = d;
-  groupMode = 'mod';
+  var divide = d;
+  var groupMode = 'mod';
   nodes.getIds().forEach(function(n) {
     // 割った余りでグループを更新する
     nodes.update({
@@ -187,10 +187,17 @@ function nodeRemove() {
  * inputタグの情報からnodeを追加する
  */
 function nodeAddButton() {
-  n = Number(document.getElementById("operation_number").value);
+  var n = Number(document.getElementById("operation_number").value);
   nodeAdd(n);
-
   nodeSearch(n);
+  if (!nodes.get(n)) {
+    operation.addButtonDisabled = false;
+    operation.serachButtonDisabled = true;
+  } else {
+    operation.addButtonDisabled = true;
+    operation.serachButtonDisabled = false;
+  }
+
 }
 
 
@@ -198,10 +205,8 @@ function nodeAddButton() {
  * inputタグの情報からnodeを追加する
  */
 function nodeSearchButton() {
-
-  n = Number(document.getElementById("operation_number").value);
+  var n = Number(document.getElementById("operation_number").value);
   nodeSearch(n);
-
 }
 
 /*

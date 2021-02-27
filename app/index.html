@@ -107,8 +107,8 @@ var operation = new Vue ({
 var colorOption = new Vue({
   el: '#colorOption',
   methods: {
-    onChange: function(e) {
-      nodeUpdateGroupMod(e.target.value);
+    onChange: function(event) {
+      nodeUpdateGroupMod(event.target.value);
     }
   }
 });
