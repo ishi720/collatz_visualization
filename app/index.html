@@ -53,16 +53,20 @@
         <div>
           <div>割った余りで色分けする</div>
     
-          <button onclick="nodeUpdateGroupMod(2)">Mod 2</button>
-          <button onclick="nodeUpdateGroupMod(3)">Mod 3</button>
-          <button onclick="nodeUpdateGroupMod(4)">Mod 4</button>
-          <button onclick="nodeUpdateGroupMod(5)">Mod 5</button>
-          <button onclick="nodeUpdateGroupMod(6)">Mod 6</button>
-          <button onclick="nodeUpdateGroupMod(7)">Mod 7</button>
-          <button onclick="nodeUpdateGroupMod(8)">Mod 8</button>
-          <button onclick="nodeUpdateGroupMod(9)">Mod 9</button>
-          <button onclick="nodeUpdateGroupMod(10)">Mod 10</button>
-    
+          <div id="colorOption">
+            <select @change="onChange($event)" size="1">
+              <option value="2">Mod 2</option>
+              <option value="3">Mod 3</option>
+              <option value="4">Mod 4</option>
+              <option value="5">Mod 5</option>
+              <option value="6">Mod 6</option>
+              <option value="7">Mod 7</option>
+              <option value="8">Mod 8</option>
+              <option value="9">Mod 9</option>
+              <option value="10">Mod 10</option>
+            </select>
+          </div>
+
           <div>2で割り続けた際の奇数値で色分けする</div>
     
           <button onclick="nodeUpdateGroupOdd()">奇数値</button>
@@ -99,6 +103,16 @@ var operation = new Vue ({
     }
   }
 });
+
+var colorOption = new Vue({
+  el: '#colorOption',
+  methods: {
+    onChange: function(e) {
+      nodeUpdateGroupMod(e.target.value);
+    }
+  }
+});
+
 
 var selectedNode = new Vue({
   el: '#selectedNode',
