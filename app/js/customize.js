@@ -232,6 +232,7 @@ function nodeSearch(n) {
     animation: {
       duration: 1000,
       easingFunction: 'easeInOutQuad'
-    }
+    },
+    scale: 1
   });
 }
