@@ -185,6 +185,14 @@ function nodeRemove() {
   nodes.remove(_selectedNode);
   edges.remove(_selectedNode);
   selectedNode.nodeId = null;
+  var n = Number(operation.inputNumber);
+  if (!nodes.get(n)) {
+    operation.addButtonDisabled = false;
+    operation.serachButtonDisabled = true;
+  } else {
+    operation.addButtonDisabled = true;
+    operation.serachButtonDisabled = false;
+  }
 }
 
 /*
