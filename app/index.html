@@ -30,18 +30,15 @@
         <div id="operation" class="operation">
           <p>nodeの追加・検索</p>
           <input id="operation_number" class="input is-small" type="number" min="1" value="1" v-on:change="handleInput" v-on:keyup="handleInput">
-          <button class="button is-small" onclick="nodeAddButton()" v-bind:disabled="addButtonDisabled">追加</button>
           <button class="button is-small" onclick="nodeSearchButton()" v-bind:disabled="serachButtonDisabled">検索</button>
+          <button class="button is-small" onclick="nodeAddButton()" v-bind:disabled="addButtonDisabled">追加</button>
+          <button class="button is-small" onclick="nodeRemove()" v-bind:disabled="removeButtonDisabled">削除</button>
         </div>
 
 
         <div id="selectedNode" v-cloak>
           <p v-if="nodeId === null">選択中の数値: -</p>
           <p v-else>選択中の数値: {{nodeId}}</p>
-        </div>
-
-        <div>
-          <button class="button is-small" onclick="nodeRemove()">選択を削除</button>
         </div>
     
         <div>
@@ -92,6 +89,7 @@ var operation = new Vue ({
   data: {
     inputNumber: '1',
     addButtonDisabled: true,
+    removeButtonDisabled: false,
     serachButtonDisabled: false
   },
   methods: {
@@ -99,9 +97,11 @@ var operation = new Vue ({
       if (!nodes.get(event.target.value)) {
         this.addButtonDisabled = false;
         this.serachButtonDisabled = true;
+        this.removeButtonDisabled = true;
       } else {
         this.addButtonDisabled = true;
         this.serachButtonDisabled = false;
+        this.removeButtonDisabled = false;
       }
     }
   }
@@ -140,10 +140,15 @@ for (var i=1; i <= 30; i++) {
 }
 
 selectedNode.nodeId = null;
-
 network.on("click", function(params) {
   if (params.nodes.length === 1) {
     selectedNode.nodeId = params.nodes[0];
+    document.getElementById("operation_number").value = String(params.nodes[0]);
+
+      operation.addButtonDisabled = false;
+      operation.removeButtonDisabled = false;
+      operation.serachButtonDisabled = true;
+
   } else {
     selectedNode.nodeId = null;
   }

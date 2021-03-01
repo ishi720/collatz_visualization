@@ -185,12 +185,14 @@ function nodeRemove() {
   nodes.remove(_selectedNode);
   edges.remove(_selectedNode);
   selectedNode.nodeId = null;
-  var n = Number(operation.inputNumber);
+  var n = Number(document.getElementById("operation_number").value);
   if (!nodes.get(n)) {
     operation.addButtonDisabled = false;
+    operation.removeButtonDisabled = true;
     operation.serachButtonDisabled = true;
   } else {
     operation.addButtonDisabled = true;
+    operation.removeButtonDisabled = false;
     operation.serachButtonDisabled = false;
   }
 }
@@ -204,12 +206,13 @@ function nodeAddButton() {
   nodeSearch(n);
   if (!nodes.get(n)) {
     operation.addButtonDisabled = false;
+    operation.removeButtonDisabled = true;
     operation.serachButtonDisabled = true;
   } else {
     operation.addButtonDisabled = true;
+    operation.removeButtonDisabled = false;
     operation.serachButtonDisabled = false;
   }
-
 }
 
 
