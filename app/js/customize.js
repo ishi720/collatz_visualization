@@ -65,6 +65,9 @@ function collatzRepeatButton() {
 function nodeClear() {
   nodes.clear();
   edges.clear();
+  selectedNode.nodeId = null;
+  operation.addButtonDisabled = false;
+  operation.serachButtonDisabled = true;
 }
 
 /*
