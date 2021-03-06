@@ -94,15 +94,7 @@ var operation = new Vue ({
   },
   methods: {
     handleInput: function (event) {
-      if (!nodes.get(event.target.value)) {
-        this.addButtonDisabled = false;
-        this.serachButtonDisabled = true;
-        this.removeButtonDisabled = true;
-      } else {
-        this.addButtonDisabled = true;
-        this.serachButtonDisabled = false;
-        this.removeButtonDisabled = false;
-      }
+      buttonDisableChange(nodes.get(event.target.value));
     }
   }
 });
@@ -145,10 +137,7 @@ network.on("click", function(params) {
     selectedNode.nodeId = params.nodes[0];
     document.getElementById("operation_number").value = String(params.nodes[0]);
 
-      operation.addButtonDisabled = false;
-      operation.removeButtonDisabled = false;
-      operation.serachButtonDisabled = true;
-
+    buttonDisableChange(true);
   } else {
     selectedNode.nodeId = null;
   }

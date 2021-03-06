@@ -66,8 +66,7 @@ function nodeClear() {
   nodes.clear();
   edges.clear();
   selectedNode.nodeId = null;
-  operation.addButtonDisabled = false;
-  operation.serachButtonDisabled = true;
+  buttonDisableChange(false);
 }
 
 /*
@@ -186,15 +185,7 @@ function nodeRemove() {
   edges.remove(_selectedNode);
   selectedNode.nodeId = null;
   var n = Number(document.getElementById("operation_number").value);
-  if (!nodes.get(n)) {
-    operation.addButtonDisabled = false;
-    operation.removeButtonDisabled = true;
-    operation.serachButtonDisabled = true;
-  } else {
-    operation.addButtonDisabled = true;
-    operation.removeButtonDisabled = false;
-    operation.serachButtonDisabled = false;
-  }
+  buttonDisableChange(nodes.get(n));
 }
 
 /*
@@ -204,15 +195,7 @@ function nodeAddButton() {
   var n = Number(document.getElementById("operation_number").value);
   nodeAdd(n);
   nodeSearch(n);
-  if (!nodes.get(n)) {
-    operation.addButtonDisabled = false;
-    operation.removeButtonDisabled = true;
-    operation.serachButtonDisabled = true;
-  } else {
-    operation.addButtonDisabled = true;
-    operation.removeButtonDisabled = false;
-    operation.serachButtonDisabled = false;
-  }
+  buttonDisableChange(nodes.get(n));
 }
 
 
@@ -249,4 +232,20 @@ function nodeSearch(n) {
     },
     scale: 1
   });
+}
+
+/*
+ * ボタンの状態を切り替える
+ * @param  {Boolean} bool
+ */
+function buttonDisableChange(bool) {
+  if (bool) {
+    operation.addButtonDisabled = true;
+    operation.removeButtonDisabled = false;
+    operation.serachButtonDisabled = false;
+  } else {
+    operation.addButtonDisabled = false;
+    operation.removeButtonDisabled = true;
+    operation.serachButtonDisabled = true;    
+  }
 }
