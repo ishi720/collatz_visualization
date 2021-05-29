@@ -83,6 +83,9 @@
 <script type="text/javascript">
 var nodes = new vis.DataSet();
 var edges = new vis.DataSet();
+var groupMode = 'mod'; // mod,odd
+var divide = 3; //グループ分けのための除算する値
+var baseNumbers = 10;
 
 var operation = new Vue ({
   el: '#operation',
@@ -104,6 +107,8 @@ var colorOption = new Vue({
   methods: {
     onChange: function(event) {
       nodeUpdateGroupMod(event.target.value);
+      divide = event.target.value;
+      console.log();
     }
   }
 });
@@ -116,9 +121,6 @@ var selectedNode = new Vue({
   }
 });
 
-var groupMode = 'mod'; // mod,odd
-var divide = 3; //グループ分けのための除算する値
-var baseNumbers = 10;
 var container = document.getElementById('network');
 var data = {
   nodes: nodes,
