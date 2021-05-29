@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/ishi720/collatz_visualization#readme",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "5.x.x",
     "bulma": "0.9.x",
+    "fontawesome": "5.x.x",
     "visjs-network": "4.x.x",
     "vue": "2.x.x"
   }

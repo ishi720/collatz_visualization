@@ -14,6 +14,9 @@
     
     <script type="text/javascript" src="./node_modules/vue/dist/vue.min.js"></script>
 
+    <script type="text/javascript" src="./node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
+    <link href="./node_modules/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+
     <script type="text/javascript" src="./js/customize.min.js"></script>
     <link rel="stylesheet" href="./css/customize.min.css">
 </head>
@@ -30,9 +33,15 @@
         <div id="operation" class="operation">
           <p>nodeの追加・検索</p>
           <input id="operation_number" class="input is-small" type="number" min="1" value="1" v-on:change="handleInput" v-on:keyup="handleInput">
-          <button class="button is-small" onclick="nodeSearchButton()" v-bind:disabled="serachButtonDisabled">検索</button>
-          <button class="button is-small" onclick="nodeAddButton()" v-bind:disabled="addButtonDisabled">追加</button>
-          <button class="button is-small" onclick="nodeRemove()" v-bind:disabled="removeButtonDisabled">削除</button>
+          <button class="button is-small" onclick="nodeSearchButton()" v-bind:disabled="serachButtonDisabled">
+            <i class="fas fa-search"></i>
+          </button>
+          <button class="button is-small" onclick="nodeAddButton()" v-bind:disabled="addButtonDisabled">
+            <i class="fas fa-plus"></i>
+          </button>
+          <button class="button is-small" onclick="nodeRemove()" v-bind:disabled="removeButtonDisabled">
+            <i class="fas fa-minus"></i>
+          </button>
         </div>
 
 

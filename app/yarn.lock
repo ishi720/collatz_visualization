@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@fortawesome/fontawesome-free@5.x.x":
+  version "5.15.3"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.3.tgz#c36ffa64a2a239bf948541a97b6ae8d729e09a9a"
+  integrity sha512-rFnSUN/QOtnOAgqFRooTA3H57JLDm0QEG/jPdk+tLQNL/eWd+Aok8g3qCI+Q1xuDPWpGW/i9JySpJVsq8Q0s9w==
+
 bulma@0.9.x:
   version "0.9.2"
   resolved "https://registry.yarnpkg.com/bulma/-/bulma-0.9.2.tgz#340011e119c605f19b8ca886bfea595f1deaf23c"
@@ -11,6 +16,11 @@ emitter-component@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/emitter-component/-/emitter-component-1.1.1.tgz#065e2dbed6959bf470679edabeaf7981d1003ab6"
   integrity sha1-Bl4tvtaVm/RwZ57avq95gdEAOrY=
+
+fontawesome@5.x.x:
+  version "5.6.3"
+  resolved "https://registry.yarnpkg.com/fontawesome/-/fontawesome-5.6.3.tgz#73f0b865fa2b0b384e69d531c05a02c643b72f95"
+  integrity sha512-FCc+CawwsJWWprVEg9X14yI7zI+l9YVAyhzgu70qwGeDn0tLLDH/dVfqgij72g4BBGgLGfK2qnvFGAmYUkhaWg==
 
 hammerjs@^2.0.8:
   version "2.0.8"
