@@ -106,6 +106,10 @@ var operation = new Vue ({
   },
   methods: {
     handleInput: function (event) {
+      if (nodes.get(event.target.value)) {
+        selectedNode.nodeId = nodes.get(event.target.value).id;
+        nodeSearch(selectedNode.nodeId);
+      };
       buttonDisableChange(nodes.get(event.target.value));
     }
   }
@@ -117,7 +121,6 @@ var colorOption = new Vue({
     onChange: function(event) {
       nodeUpdateGroupMod(event.target.value);
       divide = event.target.value;
-      console.log();
     }
   }
 });
