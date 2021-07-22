@@ -26,10 +26,11 @@
     "gulp-clean-css": "4.x.x",
     "gulp-plumber": "1.x.x",
     "gulp-rename": "2.x.x",
-    "gulp-sass": "4.x.x",
+    "gulp-sass": "5.x.x",
     "gulp-sourcemaps": "3.x.x",
     "gulp-uglify": "3.x.x",
     "gulp-watch": "5.x.x",
-    "rename": "1.x.x"
+    "rename": "1.x.x",
+    "sass": "^1.35.2"
   }
 }
