@@ -26,9 +26,11 @@
     <h2 class="title">Collatz Visualization</h2>
   </nav>
 
-    <div class="container is-fluid">
-    <div class="columns">
-      <div class="column is-3">
+  <div id="network"></div>
+
+  <div class="opeBox">
+    <div>
+      <div>
 
         <div id="operation" class="operation">
           <p>nodeの追加・検索</p>
@@ -72,11 +74,10 @@
           </div>
         </div>
       </div>
-      <div class="column is-9">
-        <div id="network"></div>
-      </div>
     </div>
   </div>
+
+
 </body>
 </html>
 
@@ -163,4 +164,22 @@ network.on("doubleClick", function(params) {
     });
   }
 });
+
+
+// var tapCount = 0 ;
+// network.on("touchstart", function() {
+//   // シングルタップ判定
+//   if( !tapCount ) {
+//     ++tapCount ;
+//     setTimeout( function() {
+//       tapCount = 0 ;
+//     }, 350 ) ;
+//   } else {
+//   // ダブルタップ判定
+//     e.preventDefault() ;
+//     tapCount = 0 ;
+//   }
+// });
+
+
 </script>

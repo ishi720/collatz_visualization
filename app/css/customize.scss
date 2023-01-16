@@ -3,9 +3,11 @@ html {
 }
 
 #network {
-  border: 1px solid #000;
-  height: 500px;
+  height: auto;
   width:  100%;
+  position: absolute;
+  bottom: 0px;
+  top: 34px;
 }
 
 .navbar {
@@ -17,6 +19,16 @@ html {
     font-size: 16px;
   }
 }
+
+.opeBox {
+  position: absolute;
+  border: solid 1px #c7c7c7;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  background-color: rgba(255,255,255,70%);
+}
+
 
 .container {
   padding: 1.5rem;
