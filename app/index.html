@@ -29,50 +29,46 @@
   <div id="network"></div>
 
   <div class="opeBox">
+
+    <div id="operation" class="operation">
+      <p>nodeの追加・検索</p>
+      <input id="operation_number" class="input is-small" type="number" min="1" value="1" v-on:change="handleInput" v-on:keyup="handleInput">
+      <button class="button is-small" onclick="nodeSearchButton()" v-bind:disabled="serachButtonDisabled">
+        <i class="fas fa-search"></i>
+      </button>
+      <button class="button is-small" onclick="nodeAddButton()" v-bind:disabled="addButtonDisabled">
+        <i class="fas fa-plus"></i>
+      </button>
+      <button class="button is-small" onclick="nodeRemove()" v-bind:disabled="removeButtonDisabled">
+        <i class="fas fa-minus"></i>
+      </button>
+    </div>
+
     <div>
-      <div>
-
-        <div id="operation" class="operation">
-          <p>nodeの追加・検索</p>
-          <input id="operation_number" class="input is-small" type="number" min="1" value="1" v-on:change="handleInput" v-on:keyup="handleInput">
-          <button class="button is-small" onclick="nodeSearchButton()" v-bind:disabled="serachButtonDisabled">
-            <i class="fas fa-search"></i>
-          </button>
-          <button class="button is-small" onclick="nodeAddButton()" v-bind:disabled="addButtonDisabled">
-            <i class="fas fa-plus"></i>
-          </button>
-          <button class="button is-small" onclick="nodeRemove()" v-bind:disabled="removeButtonDisabled">
-            <i class="fas fa-minus"></i>
-          </button>
-        </div>
-
-        <div>
-          <button class="button is-small" onclick="collatzRepeatButton()">選択した数から1までを追加する</button>
-        </div>
+      <button class="button is-small" onclick="collatzRepeatButton()">選択した数から1までを追加する</button>
+    </div>
 
 
-        <div>
-          <button class="button is-small" onclick="nodeClear()">すべてクリア</button>
-        </div>
-    
-        <div>
-          <div>色分けする</div>
-    
-          <div id="colorOption">
-            <select @change="onChange($event)" size="1">
-              <option value="2">Mod 2</option>
-              <option value="3">Mod 3</option>
-              <option value="4">Mod 4</option>
-              <option value="5">Mod 5</option>
-              <option value="6">Mod 6</option>
-              <option value="7">Mod 7</option>
-              <option value="8">Mod 8</option>
-              <option value="9">Mod 9</option>
-              <option value="10">Mod 10</option>
-              <option value="odd">2で割り切る</option>
-            </select>
-          </div>
-        </div>
+    <div>
+      <button class="button is-small" onclick="nodeClear()">すべてクリア</button>
+    </div>
+
+    <div>
+      <div>色分けする</div>
+
+      <div id="colorOption">
+        <select @change="onChange($event)" size="1">
+          <option value="2">Mod 2</option>
+          <option value="3">Mod 3</option>
+          <option value="4">Mod 4</option>
+          <option value="5">Mod 5</option>
+          <option value="6">Mod 6</option>
+          <option value="7">Mod 7</option>
+          <option value="8">Mod 8</option>
+          <option value="9">Mod 9</option>
+          <option value="10">Mod 10</option>
+          <option value="odd">2で割り切る</option>
+        </select>
       </div>
     </div>
   </div>
@@ -164,22 +160,4 @@ network.on("doubleClick", function(params) {
     });
   }
 });
-
-
-// var tapCount = 0 ;
-// network.on("touchstart", function() {
-//   // シングルタップ判定
-//   if( !tapCount ) {
-//     ++tapCount ;
-//     setTimeout( function() {
-//       tapCount = 0 ;
-//     }, 350 ) ;
-//   } else {
-//   // ダブルタップ判定
-//     e.preventDefault() ;
-//     tapCount = 0 ;
-//   }
-// });
-
-
 </script>
