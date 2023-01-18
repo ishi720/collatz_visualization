@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
     <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
-    
+
     <link href="./node_modules/bulma/css/bulma.min.css" rel="stylesheet">
 
     <script type="text/javascript" src="./node_modules/visjs-network/dist/vis.js"></script>
@@ -26,12 +26,14 @@
 
   <nav class="navbar has-shadow">
     <h2 class="title">Collatz Visualization</h2>
+    <a target="_blank" href="https://github.com/ishi720/collatz_visualization">
+      <i class="fab fa-github"></i>
+    </a>
   </nav>
 
   <div id="network"></div>
 
   <div class="opeBox">
-
     <div id="operation" class="operation">
       <p>nodeの追加・検索</p>
       <input id="operation_number" class="input is-small" type="number" min="1" value="1" v-on:change="handleInput" v-on:keyup="handleInput">
