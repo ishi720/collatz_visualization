@@ -1,3 +1,5 @@
+module.exports = { collatz };
+
 /*
  * コラッツ問題の計算を行う
  * @param  {Number} n 自然数
@@ -5,7 +7,7 @@
  */
 function collatz(n) {
   if (n === 1)  {
-    return;
+    return n;
   }
   if (n % 2 === 0) {
     return n / 2;

@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "cd app && yarn install && gulp deploy",
     "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -32,5 +32,8 @@
     "gulp-watch": "5.x.x",
     "rename": "1.x.x",
     "sass": "1.x.x"
+  },
+  "devDependencies" : {
+    "jest": "29.x.x"
   }
 }
