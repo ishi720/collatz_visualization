@@ -2,7 +2,7 @@ name: Jest Tests
 
 on:
   push:
-    branches: [ master ] # mainブランチへのプッシュ時に実行
+    branches: [ master ]
 
 jobs:
   test:

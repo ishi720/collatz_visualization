@@ -18,3 +18,24 @@ describe('collatz', () => {
         expect(collatz_visualization.collatz(10)).toBe(5);
     });
 });
+
+describe('collatzReverseOrder', () => {
+    it ('out of calc range', () => {
+        expect(collatz_visualization.collatzReverseOrder(0)).toEqual([0]);
+    });
+    it ('1way', () => {
+        expect(collatz_visualization.collatzReverseOrder(1)).toEqual([2]);
+        expect(collatz_visualization.collatzReverseOrder(2)).toEqual([4]);
+        expect(collatz_visualization.collatzReverseOrder(3)).toEqual([6]);
+        expect(collatz_visualization.collatzReverseOrder(4)).toEqual([8]);
+        expect(collatz_visualization.collatzReverseOrder(5)).toEqual([10]);
+        expect(collatz_visualization.collatzReverseOrder(6)).toEqual([12]);
+        expect(collatz_visualization.collatzReverseOrder(7)).toEqual([14]);
+        expect(collatz_visualization.collatzReverseOrder(8)).toEqual([16]);
+        expect(collatz_visualization.collatzReverseOrder(9)).toEqual([18]);
+    });
+    it ('2ways', () => {
+        expect(collatz_visualization.collatzReverseOrder(10)).toEqual([3, 20]);
+        expect(collatz_visualization.collatzReverseOrder(16)).toEqual([5, 32]);
+    });
+});

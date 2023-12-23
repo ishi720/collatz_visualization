@@ -1,4 +1,4 @@
-module.exports = { collatz };
+module.exports = { collatz, collatzReverseOrder };
 
 /*
  * コラッツ問題の計算を行う
