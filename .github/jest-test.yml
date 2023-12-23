@@ -1,0 +1,18 @@
+name: Jest Tests
+
+on:
+  push:
+    branches: [ main ] # mainブランチへのプッシュ時に実行
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run Jest tests
+        run: yarn test
