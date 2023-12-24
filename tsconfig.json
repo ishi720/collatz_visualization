@@ -1,0 +1,17 @@
+// tsconfig.json
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "outDir": "app/js/" // 出力先ディレクトリを指定する
+  },
+  "include": [
+    "app/ts/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

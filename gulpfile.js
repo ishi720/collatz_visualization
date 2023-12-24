@@ -6,6 +6,7 @@ const cleanCSS  = require('gulp-clean-css');
 const rename = require('gulp-rename');
 const sourcemaps = require('gulp-sourcemaps');
 const uglify = require('gulp-uglify');
+const typescript = require('gulp-typescript');
 require('gulp-watch');
 const plumber = require('gulp-plumber');
 const browserSync = require('browser-sync').create();
@@ -35,6 +36,15 @@ gulp.task('browser-sync', () => {
     });
 });
 
+// tsをコンパイル
+gulp.task('ts',  () => {
+    return gulp.src('app/ts/customize.ts')
+        .pipe(plumber())
+        .pipe(typescript())
+        .js
+        .pipe(gulp.dest('app/js'));
+});
+
 //jsをminfyする
 gulp.task('js-minify', () => {
     return gulp.src(['./app/js/*.js', '!./app/js/*.min.js'])
@@ -49,10 +59,11 @@ gulp.task('js-minify', () => {
 gulp.task('watch', () => {
 	gulp.watch('app/css/customize.scss', gulp.task('sass'));
     gulp.watch('app/index.html', gulp.task('reload'));
+    gulp.watch(['./app/ts/*.js'], gulp.task('ts'));
     gulp.watch(['./app/js/*.js', '!./app/js/*.min.js'], gulp.task('js-minify'));
 });
 
-gulp.task('deploy', gulp.series(gulp.parallel('sass','js-minify')));
+gulp.task('deploy', gulp.series(gulp.parallel('sass','ts'),'js-minify'));
 
 //デフォルト
 gulp.task('default', gulp.series('deploy', gulp.parallel('browser-sync','watch')));
