@@ -59,7 +59,7 @@ gulp.task('js-minify', () => {
 gulp.task('watch', () => {
 	gulp.watch('app/css/customize.scss', gulp.task('sass'));
     gulp.watch('app/index.html', gulp.task('reload'));
-    gulp.watch(['./app/ts/*.js'], gulp.task('ts'));
+    gulp.watch(['./app/ts/*.ts'], gulp.task('ts'));
     gulp.watch(['./app/js/*.js', '!./app/js/*.min.js'], gulp.task('js-minify'));
 });
 
