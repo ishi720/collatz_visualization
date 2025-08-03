@@ -26,6 +26,17 @@
 
 ### セットアップ
 
+グローバルの設定
+
+- nodeのインストール(npmも同時にインストールされる)
+- yarnのinstall
+
+```bash
+$ npm -g install yarn
+```
+
+アプリのモジュールの設定
+
 ```bash
 $ yarn install
 $ yarn run start
