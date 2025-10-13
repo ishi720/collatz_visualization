@@ -22,7 +22,7 @@ function collatz(n: number): number {
  * @return {Array}   計算結果
  */
 function collatzReverseOrder(n: number): number[] {
-  var array = [];
+  const array = [];
   if (n !== 1) {
     if (((n - 1) / 3) % 2 === 1) {
       if ((n - 1) / 3 !== 1) {
@@ -38,10 +38,10 @@ function collatzReverseOrder(n: number): number[] {
  * 1になるまで追加
  * @param  {Number} n 自然数
  */
-function collatzRepeat(n:number): void {
+function collatzRepeat(n: number): void {
   nodeAdd(n);
   nodeAdd(collatzReverseOrder(n));
-  while ( n !== 1 ) {
+  while (n !== 1) {
     n = collatz(n);
     nodeAdd(n);
 
@@ -55,8 +55,8 @@ function collatzRepeat(n:number): void {
  * 選択したnodeから1になるまで追加するボタン
  */
 function collatzRepeatButton(): void {
-  if ( network.getSelectedNodes().length > 0 ) {
-    var n = network.getSelectedNodes()[0];
+  if (network.getSelectedNodes().length > 0) {
+    const n = network.getSelectedNodes()[0];
     collatzRepeat(n);
   }
 }
@@ -75,7 +75,7 @@ function nodeClear(): void {
  * nodeを追加する
  * @param  {Number} n 自然数
  */
-function nodeAdd(n:number): void {
+function nodeAdd(n: number): void {
   if (nodes.get(n)) {
     return; //登録済みのnodeは追加しない
   }
@@ -83,7 +83,7 @@ function nodeAdd(n:number): void {
   nodes.add([{
     id: n,
     label: n.toString(10),
-    group: getGroup(n,divide)
+    group: getGroup(n, divide)
   }]);
 
   if (n !== 1) {
@@ -99,9 +99,9 @@ function nodeAdd(n:number): void {
 /*
  * グループ分けをする
  */
-function getGroup(n:number): void {
+function getGroup(n: number): void {
   if (groupMode === 'mod') {
-    return getGroupMod(n,divide);
+    return getGroupMod(n, divide);
   } else {
     return getGroupOdd(n);
   }
@@ -121,8 +121,8 @@ function getGroupMod(n: number, d: number): string {
  * 2で割り続けた際のたどり着く奇数を返す
  * @param  {Number} n 自然数
  */
- function getGroupOdd(n: number): string {
-  while ( n % 2 === 0 ) {
+function getGroupOdd(n: number): string {
+  while (n % 2 === 0) {
     n = n / 2;
   }
   return String(n);
@@ -219,7 +219,7 @@ function nodeSearch(n: number): void {
   }
 
   //選択したnodeを選択状態にする
-  network.setSelection({nodes:[n]});
+  network.setSelection({nodes: [n]});
   selectedNode.nodeId = n;
 
   //追加したnodeを中心にする
@@ -248,6 +248,6 @@ function buttonDisableChange(bool: boolean): void {
   } else {
     operation.addButtonDisabled = false;
     operation.removeButtonDisabled = true;
-    operation.serachButtonDisabled = true;    
+    operation.serachButtonDisabled = true;
   }
 }
